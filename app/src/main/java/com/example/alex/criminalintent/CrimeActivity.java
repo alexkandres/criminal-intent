@@ -1,16 +1,25 @@
 package com.example.alex.criminalintent;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 
-
-public class CrimeActivity extends FragmentActivity {
+//was extending FragmentActivity
+public class CrimeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime);
+
+        FragmentManager fManager = getFragmentManager();
+        Fragment fragment = fManager.findFragmentById(R.id.fragmentContainer);
+        if(fragment == null){
+            fragment = new CrimeFragment();
+            fManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
+        }
     }
 
 
