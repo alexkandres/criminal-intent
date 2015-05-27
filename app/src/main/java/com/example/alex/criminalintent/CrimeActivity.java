@@ -9,6 +9,7 @@ import android.view.MenuItem;
 //was extending FragmentActivity
 public class CrimeActivity extends Activity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
