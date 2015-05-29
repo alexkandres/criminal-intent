@@ -12,6 +12,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Created by Alex on 5/25/2015.
  */
@@ -53,7 +56,8 @@ public class CrimeFragment extends android.app.Fragment {
             }
         });//Changing the text of the crime
 
-        mDateButton.setText(mCrime.getDate().toString()); //set the text of the button to the crime date
+        SimpleDateFormat sdf= new SimpleDateFormat("EEEE, MMM F, yyyy", Locale.US);
+        mDateButton.setText(sdf.format(mCrime.getDate())); //set the text of the button to the crime date
         mDateButton.setEnabled(false);
 
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
