@@ -12,14 +12,22 @@ public class CrimeLab {
     private static CrimeLab sCrimeLab;
     private Context mAppContext;
     private ArrayList<Crime> mCrimes;
-    private CrimeLab(Context appContext){//singleton
+
+    private CrimeLab(Context appContext){//singleton allows one instance of itself
         mAppContext = appContext;
         mCrimes = new ArrayList<Crime>();
+
+        for(int i = 0; i < 100;i++){ //Creating 100 crimes
+            Crime crime = new Crime();
+            crime.setTitle("Crime #"+i);
+            crime.setSolved(i%2 == 0);
+            mCrimes.add(crime);
+        }
     }
 
     public static CrimeLab get(Context c){
         if(sCrimeLab == null){
-            sCrimeLab = new CrimeLab(c.getApplicationContext());
+            sCrimeLab = new CrimeLab(c.getApplicationContext());//calling c.getApplicationContext insures long term
         }
         return  sCrimeLab;
     }
