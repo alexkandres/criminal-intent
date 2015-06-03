@@ -1,42 +1,30 @@
 package com.example.alex.criminalintent;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.os.Bundle;
-import android.view.MenuItem;
 
 //was extending FragmentActivity
-public class CrimeActivity extends Activity {
+public class CrimeActivity extends SingleFragmentActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
-
-        FragmentManager fManager = getFragmentManager();
-        Fragment fragment = fManager.findFragmentById(R.id.fragmentContainer);
-        if(fragment == null){
-            fragment = new CrimeFragment();
-            fManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
-        }
+    protected Fragment createFragment() {
+        return new CrimeFragment();
     }
 
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
