@@ -1,16 +1,16 @@
 package com.example.alex.criminalintent;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 
 /**
  * Created by Alex on 6/3/2015.
  * SingleFragmentActivity is abstract so any subclass
  * implements abstract method createFragment();
  */
-abstract public class SingleFragmentActivity extends Activity {
+abstract public class SingleFragmentActivity extends FragmentActivity{
     protected abstract Fragment createFragment();
 
     @Override
@@ -18,7 +18,7 @@ abstract public class SingleFragmentActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
 
         if(fragment == null){

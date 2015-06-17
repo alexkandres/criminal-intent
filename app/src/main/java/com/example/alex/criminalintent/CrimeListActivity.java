@@ -1,6 +1,6 @@
 package com.example.alex.criminalintent;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by Alex on 6/3/2015.

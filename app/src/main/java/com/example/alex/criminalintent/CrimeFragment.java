@@ -2,6 +2,7 @@ package com.example.alex.criminalintent;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -19,7 +20,7 @@ import java.util.UUID;
 /**
  * Created by Alex on 5/25/2015.
  */
-public class CrimeFragment extends android.app.Fragment {
+public class CrimeFragment extends Fragment {
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;

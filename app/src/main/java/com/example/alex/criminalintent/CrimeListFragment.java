@@ -1,8 +1,8 @@
 package com.example.alex.criminalintent;
 
-import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -29,7 +29,7 @@ public class CrimeListFragment extends ListFragment{
     public void onListItemClick(ListView l, View v, int position, long id){//when you click the ListView
         //Crime c = (Crime) getListAdapter().getItem(position);//list fragment convenience method
         Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
-        Intent intentStartCrimeActivity = new Intent(getActivity(), CrimeActivity.class);//use getActivity
+        Intent intentStartCrimeActivity = new Intent(getActivity(), CrimePagerActivity.class);//use getActivity
         intentStartCrimeActivity.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
         startActivity(intentStartCrimeActivity);
         //Log.d(TAG, c.getTitle() + " was clicked");
