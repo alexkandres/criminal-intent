@@ -1,8 +1,8 @@
 package com.example.alex.criminalintent;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Alex on 6/3/2015.
- */
 public class CrimeListFragment extends ListFragment{
     private ArrayList<Crime> mCrimeLab;
     private String TAG = "CrimeListFragment";
@@ -29,14 +26,25 @@ public class CrimeListFragment extends ListFragment{
         setListAdapter(adapter);
     }
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id){
+    public void onListItemClick(ListView l, View v, int position, long id){//when you click the ListView
         //Crime c = (Crime) getListAdapter().getItem(position);//list fragment convenience method
         Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
-        Log.d(TAG, c.getTitle() + " was clicked");
+        Intent intentStartCrimeActivity = new Intent(getActivity(), CrimeActivity.class);//use getActivity
+        intentStartCrimeActivity.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
+        startActivity(intentStartCrimeActivity);
+        //Log.d(TAG, c.getTitle() + " was clicked");
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
     }
 
-    private class CrimeAdapter extends ArrayAdapter<Crime>{//custom adapter inner class that works with crime methods
 
+
+    //custom adapter inner class that works with crime methods
+    private class CrimeAdapter extends ArrayAdapter<Crime>{
+        //constructor
         public CrimeAdapter(ArrayList<Crime> crimes){
             super(getActivity(), 0, crimes);
         }
