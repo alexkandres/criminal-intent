@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by Alex on 6/17/2015.
@@ -38,6 +39,33 @@ public class CrimePagerActivity extends FragmentActivity{
             @Override
             public int getCount() {
                 return mCrimes.size();
+            }
+        });
+        //updates to the current item clicked in the list
+        UUID id = (UUID) getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
+        for(int i = 0; i < mCrimes.size();i++){
+            if(mCrimes.get(i).getId().equals(id)){
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Crime c = mCrimes.get(position);
+                if(c.getTitle() != null)
+                    setTitle(c.getTitle());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
