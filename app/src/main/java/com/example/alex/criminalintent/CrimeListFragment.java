@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+/**
+ *Handles list view of crimes
+ */
 
 public class CrimeListFragment extends ListFragment{
     private ArrayList<Crime> mCrimeLab;
@@ -25,8 +28,9 @@ public class CrimeListFragment extends ListFragment{
         CrimeAdapter adapter = new CrimeAdapter(mCrimeLab);
         setListAdapter(adapter);
     }
+    //when you click the ListView
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id){//when you click the ListView
+    public void onListItemClick(ListView l, View v, int position, long id){
         //Crime c = (Crime) getListAdapter().getItem(position);//list fragment convenience method
         Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
         Intent intentStartCrimeActivity = new Intent(getActivity(), CrimePagerActivity.class);//use getActivity

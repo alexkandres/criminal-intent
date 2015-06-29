@@ -3,7 +3,7 @@ package com.example.alex.criminalintent;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by Alex on 6/3/2015.
+ * Activity that hosts the CrimeListFragment
  */
 public class CrimeListActivity extends SingleFragmentActivity {
     @Override

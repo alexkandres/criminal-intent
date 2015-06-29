@@ -2,7 +2,9 @@ package com.example.alex.criminalintent;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -18,7 +20,8 @@ import java.util.Locale;
 import java.util.UUID;
 
 /**
- * Created by Alex on 5/25/2015.
+ * Alex Andres
+ * Handles the detail part of crime
  */
 public class CrimeFragment extends Fragment {
     private Crime mCrime;
@@ -26,6 +29,7 @@ public class CrimeFragment extends Fragment {
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
     public static final String EXTRA_CRIME_ID = "com.alexkandres.criminalintent.crime_id";
+    private static final String DIALOG_DATE = "date";
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -66,7 +70,16 @@ public class CrimeFragment extends Fragment {
 
         SimpleDateFormat sdf= new SimpleDateFormat("EEEE, MMM F, yyyy", Locale.US);
         mDateButton.setText(sdf.format(mCrime.getDate())); //set the text of the button to the crime date
-        mDateButton.setEnabled(false);
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialogFragment= new DatePickerFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                dialogFragment.show(fragmentManager, DIALOG_DATE);
+            }
+        });
+
+        //mDateButton.
 
         mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

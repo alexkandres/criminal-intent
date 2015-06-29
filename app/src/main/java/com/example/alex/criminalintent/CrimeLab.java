@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Created by Alex on 5/30/2015.
+ * Where the crime gets handled with singleton
  */
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
