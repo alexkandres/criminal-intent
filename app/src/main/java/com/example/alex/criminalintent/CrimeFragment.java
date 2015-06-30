@@ -73,7 +73,7 @@ public class CrimeFragment extends Fragment {
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dialogFragment= new DatePickerFragment();
+                DialogFragment dialogFragment= new DatePickerFragmentTwo();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 dialogFragment.show(fragmentManager, DIALOG_DATE);
             }
@@ -92,7 +92,7 @@ public class CrimeFragment extends Fragment {
 
         return v;
     }
-
+    //passing data
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_CRIME_ID, crimeId);
