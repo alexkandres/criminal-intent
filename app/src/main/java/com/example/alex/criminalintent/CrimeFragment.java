@@ -70,16 +70,15 @@ public class CrimeFragment extends Fragment {
 
         SimpleDateFormat sdf= new SimpleDateFormat("EEEE, MMM F, yyyy", Locale.US);
         mDateButton.setText(sdf.format(mCrime.getDate())); //set the text of the button to the crime date
+        //creates and shows date picker
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dialogFragment= new DatePickerFragmentTwo();
+                DialogFragment dialogFragment= DatePickerFragmentTwo.newInstance(mCrime.getDate());
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 dialogFragment.show(fragmentManager, DIALOG_DATE);
             }
         });
-
-        //mDateButton.
 
         mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -92,7 +91,7 @@ public class CrimeFragment extends Fragment {
 
         return v;
     }
-    //passing data
+
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_CRIME_ID, crimeId);
